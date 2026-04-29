@@ -3,7 +3,7 @@ set -e
 
 DEFAULTS=/defaults/dnscrypt-proxy.toml
 OVERRIDES=/config/overrides.toml
-MERGED=/tmp/dnscrypt-proxy.toml
+MERGED=/config/dnscrypt-proxy.toml
 
 if [ -f "$OVERRIDES" ]; then
     yq eval-all 'select(fi==0) * select(fi==1)' "$DEFAULTS" "$OVERRIDES" \

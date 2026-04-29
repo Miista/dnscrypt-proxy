@@ -23,8 +23,8 @@ jobs:
         run: |
           LATEST=$(curl -sf \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/klutchell/dnscrypt-proxy-docker/releases/latest" \
-            | jq -r '.tag_name')
+            "https://api.github.com/repos/klutchell/dnscrypt-proxy-docker/tags" \
+            | jq -r '.[0].name | ltrimstr("v")')
 
           CURRENT=$(cat .version 2>/dev/null || echo "")
 
